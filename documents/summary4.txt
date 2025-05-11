@@ -1,0 +1,1 @@
+Natural Language Processing is a field of AI that deals with the interaction between computers and human language. It allows machines to understand, interpret, and generate human language. Examples include chatbots, translation tools, and sentiment analysis.
