@@ -1,0 +1,1 @@
+Machine learning is a subset of AI that enables computers to learn from data. It involves training models using algorithms that improve their performance over time. Examples include supervised learning, unsupervised learning, and reinforcement learning.
