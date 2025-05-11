@@ -1,0 +1,6 @@
+langchain
+sentence-transformers
+faiss-cpu
+openai
+PyPDF2
+python-docx
