@@ -5,7 +5,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
 import os
-from query_rewriter import rewrite_query  # BONUS import
+from query_rewriter import rewrite_query
 
 def load_documents(directory):
     docs = []
@@ -40,7 +40,6 @@ def run_rag_query_with_rewriting(db, original_query):
     print("\nRewriting query for better retrieval...")
     rewritten_query = rewrite_query(original_query)
     print(f"Rewritten Query: {rewritten_query}")
-
     llm = OpenAI(temperature=0)
     qa = RetrievalQA.from_chain_type(llm=llm, retriever=db.as_retriever(), return_source_documents=True)
     return qa.run(original_query)
