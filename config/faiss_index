@@ -1,0 +1,1 @@
+db.save_local("config/faiss_index")
