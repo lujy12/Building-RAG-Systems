@@ -5,6 +5,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
 import os
+from query_rewriter import rewrite_query  # BONUS import
 
 def load_documents(directory):
     docs = []
@@ -35,20 +36,24 @@ def load_faiss_index(model_name="all-MiniLM-L6-v2", path="config/faiss_index"):
     embedding_model = HuggingFaceEmbeddings(model_name=model_name)
     return FAISS.load_local(path, embedding_model)
 
-def run_rag_query(db, query):
+def run_rag_query_with_rewriting(db, original_query):
+    print("\nRewriting query for better retrieval...")
+    rewritten_query = rewrite_query(original_query)
+    print(f"Rewritten Query: {rewritten_query}")
+
     llm = OpenAI(temperature=0)
     qa = RetrievalQA.from_chain_type(llm=llm, retriever=db.as_retriever(), return_source_documents=True)
-    return qa.run(query)
+    return qa.run(original_query)
 
 if __name__ == "__main__":
     docs = load_documents("documents")
     chunks = split_documents(docs)
     db = create_faiss_index(chunks)
 
-    print("\nRAG System Ready.")
+    print("\nRAG System Ready with Query Rewriting.")
     while True:
         query = input("\nEnter a question (or type 'exit'): ")
         if query.lower() == "exit":
             break
-        response = run_rag_query(db, query)
+        response = run_rag_query_with_rewriting(db, query)
         print(f"\nAnswer: {response}")
