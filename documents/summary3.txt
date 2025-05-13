@@ -1,1 +1,0 @@
-Deep learning is a type of machine learning that uses neural networks with many layers. It is highly effective for processing images, speech, and complex patterns. It powers applications like facial recognition, voice assistants, and self-driving cars.
