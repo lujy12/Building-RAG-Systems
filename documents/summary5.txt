@@ -1,1 +1,0 @@
-Reinforcement learning is an AI technique where an agent learns to make decisions by taking actions in an environment to maximize some notion of cumulative reward. It is commonly used in robotics, gaming, and recommendation systems.
